@@ -56,19 +56,23 @@ body{
 }
 
 .text-input {
+  height: 8.5vh;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
   border: .1vw solid white;
   border-radius: 50px;
-  padding-top: 1.2vh;
-  padding-bottom: 1.2vh;
-  padding-left: .6vh;
-  padding-right: .6vh;
+  padding-top: .4vw;
+  padding-bottom: .4vw;
+  padding-left: .4vw;
+  padding-right: .4vw;
   margin-bottom: 1.5vw;
   margin-right: 1.5vw;
   margin-left: 1.5vw;
   background-color: rgba(255, 255, 255, 0.8);
   color: #444444;
   outline: none;
-  width: 97vw;
+  width: 90.5vw;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -80,7 +84,8 @@ input {
   width: 100%;
   border-radius: 35px;
   border: solid 1px white;
-  padding-left: 15px;
+  padding-left: 2vw;
+  margin-right: .4vw;
   height: 7vh;
   font-size: 1.5vw;
 }
@@ -105,12 +110,27 @@ input:hover {
 }
 
 button {
-  height: 10vh;
-  width: 10vh;
-  font-size: 10vh;
-  padding-right: 1.5vw;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  height: 8.25vh;
+  width: 8.25vh;
+  margin-right: 1.5vw;
+  margin-left: 500px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.8);
+  transform: rotate(270deg);
+  margin-bottom: 1.5vw;
+  border: 1px solid white;
+}
+
+b {
+  display: block;
+  position: absolute;
+  left: 20px;
+  bottom: 10px;
+  transform: rotate(270deg);
+  font-size: 5vh;
 }
 
 button:hover {
@@ -118,11 +138,32 @@ button:hover {
   color: white;
 }
 
-.bottom-header {
-  align-items: flex-end;
-  display: flex;
-  justify-content: center;
+.message {
+  background-color: white;
+  opacity: 0.8;
+  padding: .75vw;
+  font-size: 1.5vw;
+  border-radius: 1.25vh;
+  margin-bottom: 2vh;
+  margin-left: 1.5vw;
+  display: table;
+  max-width: 50%;
+  min-width: 150px;
 }
+
+@media screen and (max-width:1166px) {
+  .message{font-size: 2vw;}
+  input{font-size: 3vw;}
+}
+
+.messages {
+  height: 87vh;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow-y: scroll;
+  justify-content: flex-start;
+}
+
 
 
 

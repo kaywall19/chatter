@@ -18,6 +18,14 @@ function App() {
       </div>
     </header> 
 
+    <div className="messages">
+      {messages.map((message,i)=> {
+          return <div key={i} className="message-wrap">
+            <div className="message">{message}</div>
+          </div>
+        })}
+    </div>
+
     <TextInput onSend={text=> {
       setMessages([text, ...messages])
     }}/> 
@@ -45,9 +53,15 @@ function TextInput(props) {
         props.onSend(text)
         setText('')
       }
-    }} className="button"
+    }} onKeyPress={(e)=> {
+      if (e.key === "Enter" && (text)) {
+        props.onSend(text)
+        setText('')
+      }
+    }}
+      className="button"
       disabled={!text}>
-      >
+      <b>&#8595;</b>
     </button>
   </div>
 }
