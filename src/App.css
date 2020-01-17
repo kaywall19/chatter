@@ -55,13 +55,9 @@ body{
   #call, #search, #more{width:9vw;}
 }
 
-
 .text-input {
   border: .1vw solid white;
   border-radius: 50px;
-  position: absolute;
-  bottom: 0px;
-  height: 9vh;
   padding-top: 1.2vh;
   padding-bottom: 1.2vh;
   padding-left: .6vh;
@@ -87,7 +83,6 @@ input {
   padding-left: 15px;
   height: 7vh;
   font-size: 1.5vw;
-
 }
 
 input:hover {
@@ -113,6 +108,7 @@ button {
   height: 10vh;
   width: 10vh;
   font-size: 10vh;
+  padding-right: 1.5vw;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.8);
 }
@@ -122,7 +118,11 @@ button:hover {
   color: white;
 }
 
-
+.bottom-header {
+  align-items: flex-end;
+  display: flex;
+  justify-content: center;
+}
 
 
 
