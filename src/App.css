@@ -1,38 +1,176 @@
-.App {
-  text-align: center;
+
+*{
+  box-sizing:border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html{
+  height:100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body{
+  font-family:-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Arial,sans-serif;
+  height:100%;
+  background: linear-gradient(180deg, rgba(255,132,0,1) 0%, rgba(255,130,179,1) 100%);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+.main-title {
+  font-size: 20px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  padding: 8px;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #ff82b3;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.text-input {
+  border: 1px solid white;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  height: 42px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 6px;
+  padding-right: 6px;
+  text-align: right;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #444444;
+  outline: none;
+  width: 100%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
 }
 
-.App-link {
-  color: #61dafb;
+.text-input img {
+  height: 15px;
+  display: block;
+  position: aboslute;
+  left: 3px;
+  margin-right: 3px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input {
+  outline: none;
+  width: 100%;
+  outline: none;
+  border-radius: 15px;
+  border: solid 1px white;
+  margin-right: 3px;
+  font-size: 9pt;
+  padding-left: 7px;
+}
+
+button {
+  position: absolute;
+  right: 9px;
+  border-radius: 15px;
+  border-right: solid 1px #ff82b3;
+  background-color: white;
+}
+
+#send-arrow {
+  position: absolute;
+  left: calc(100% - 35px);
+  height: 19px;
+  padding: 2px;
+  padding-right: 5px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#call {
+  height: 15px;
+  position: absolute;
+  left: 72%; 
+}
+
+#search {
+  height: 15px;
+  position: absolute;
+  left: 82%;
+
+}
+
+#more {
+  height: 18px;
+  position: absolute;
+  left: 91%;
+}
+
+#logo {
+  height: 25px;
+  margin-right: 7px;
+  padding-left: 1px;
+}
+
+#background {
+  position: absolute;
+  height: 150px;
+  top: 32%;
+  left: 22%;
+  opacity: 0.04;
+}
+
+.message {
+  background-color: white;
+  opacity: 0.8;
+  padding: 7px;
+  font-size: 9pt;
+  border-radius: 10px;
+  position: absolute;
+  left: 20px;
+}
+
+#one {
+  top: 57%;
+}
+
+#two {
+  top: 67%;
+}
+
+#three {
+  top: 77%;
+}
+
+.arrow {
+  width: 0; 
+  height: 0; 
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;  
+  border-right: 8px solid white; 
+  opacity: 0.8;
+  position: absolute;
+  left: 12.4px;
+}
+
+#oneA {
+  top: 61%
+}
+
+#twoA {
+  top: 71%
+}
+
+#threeA {
+  top: 81%
+}
+
+input:hover {
+  border: solid 1px #ff82b3;
 }
