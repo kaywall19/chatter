@@ -12,6 +12,7 @@ body{
   height:100%;
   background: linear-gradient(180deg, rgba(255,132,0,1) 0%, rgba(255,130,179,1) 100%);
   width: 100%;
+  margin:0;
 }
 
 .header {
@@ -141,7 +142,7 @@ button:hover {
   background-color: white;
   opacity: 0.8;
   padding: .75vw;
-  font-size: 12px;
+  font-size: 13px;
   border-radius: 1.25vh;
   display: table;
   max-width: 35%;
@@ -166,7 +167,7 @@ button:hover {
 .message-wrap {
   display: flex;
   align-items: center;
-  margin-bottom: 1vh;
+  margin-bottom: 1px;
   margin-left: 1.5vw;
 }
 
@@ -200,7 +201,7 @@ button:hover {
 }
 
 @media screen and (max-width:1166px) {
-  .messages{height:82vh;}
+  .messages{height:78vh;}
 }
 
 #header-input {
