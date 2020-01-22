@@ -1,30 +1,32 @@
-import React, {useState} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
+import { MdAccountCircle } from 'react-icons/md'
 
 function NamePicker(props) {
     
     const [editName, setEditName] = useState(false)
-    const [name, setName] = useState('Add Username')
+    const [name, setName] = useState('Add User')
+    const inputEl = useRef(null)
 
     if(editName == false) {
         return <div className= "id">
-            {name}
-            <img 
+            <p id="placeholder">{name}</p>
+            <MdAccountCircle
                 onClick={()=> {
                     setEditName(true)
                     setName('')
                     props.onSend("")
                 }}
-                src="https://img.icons8.com/material-rounded/24/000000/edit-user-male.png"
                 id="profile"
             />
         </div>
     } else if (editName == true) {
         return <div className= "id">
-            <input size="10"
+            <input size="12"
             value={name}
+            ref={inputEl}
             className = "input"
             id="header-input"
-            placeholder="Add Username"
+            placeholder="Add User"
             onChange={e=> {
                 setName(e.target.value)
             }}
@@ -34,17 +36,18 @@ function NamePicker(props) {
             if (e.key === "Enter" && (name)) {
                 props.onSend(name)
                 setEditName(false)
+                inputEl.current.focus()
                 setName('')
             }}}/>   
 
-            <img 
+            <MdAccountCircle 
                 onClick={()=> {
                 if(name) {
                     props.onSend(name)
                     setName('')
                     setEditName(false)
+                    inputEl.current.focus()
                 }}}
-                src="https://img.icons8.com/material-rounded/24/000000/edit-user-male.png"
                 id="profile"
             />
         </div>
