@@ -52,14 +52,6 @@ function NamePicker(props) {
             />
         </div>
     }
-    
-
-
-        
-
-
 }
-
-
 
 export default NamePicker

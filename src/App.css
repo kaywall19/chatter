@@ -154,7 +154,7 @@ button:hover {
   font-size: 13px;
   border-radius: 1vh;
   display: table;
-  max-width: 40%;
+  max-width: 100%;
   min-width: 1%;
   min-height: 3vh;
   word-break: break-all;
@@ -176,15 +176,16 @@ button:hover {
   height: 78vh;
   display: flex;
   flex-direction: column-reverse;
-  overflow-y: scroll;
+  overflow-y: auto;
   justify-content: flex-start;
+  margin: auto auto;
 }
 
 .message-wrap {
   display: flex;
   align-items: center;
   margin-bottom: 1px;
-  margin-left: 1.5vw;
+  margin-top: 35px;
 }
 
 .arrow {
@@ -205,23 +206,24 @@ button:hover {
 
 #message-from {
   font-size: 12px;
-  margin-left: 2.5vw;
   color: white;
-  margin-bottom: 5px;
+  bottom: 42%;
+  position:absolute;
 }
 
 .with-name {
-  display: flex;
-  flex-direction: column;
+  display:flex;
+  position:relative;
+  margin-right: 2vw;
+  margin-left: 1.5vw;
+  align-items: center;
+}
+
+.with-name[from="me"] {
   justify-content: flex-end;
 }
 
 @media screen and (max-width:1166px) {
   .messages{height:80vh;}
   #placeholder{display:none;}
-  #message-from{margin-left: 4vw;}
 }
-
-
-
-
