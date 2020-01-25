@@ -8,6 +8,7 @@ import { MdInsertEmoticon } from 'react-icons/md'
 import { MdPhotoCamera } from 'react-icons/md'
 import {db, useDB} from './db'
 import { BrowserRouter, Route } from "react-router-dom"
+import Camera from 'react-snap-pic'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
 
 function Room(props) {
 
+  const [showCamera, setShowCamera] = useState(false)
   const{room} = props.match.params
   const [messages, setMessages] = useState([])
   const [name, setName] = useState("")
@@ -61,7 +63,14 @@ function Room(props) {
       db.send({
         text, name, ts: new Date(), room,
       })
-    }}/> 
+    }}
+      showCamera={()=>setShowCamera(true)
+    }/>
+
+    {showCamera && <Camera takePicture={(img)=> {
+      console.log(img)
+      setShowCamera(false)
+    }}/>}
 
   </main>
 }
@@ -74,7 +83,10 @@ function TextInput(props) {
   return <div className="bottom-header">
     <div className= "text-input">
       <div className= "message-icons">
-        <MdPhotoCamera className="extras"/>
+        <MdPhotoCamera
+          onClick={props.showCamera}
+          className="extras">
+        </MdPhotoCamera>
         <MdInsertEmoticon className="extras"/>
       </div>
       <input value={text}
@@ -96,7 +108,7 @@ function TextInput(props) {
         inputEl.current.focus()
         setText('')
       }}}
-      className="button"
+      className="send-button"
       disabled={!text}>
       <FiSend id="send"/>
     </button>
