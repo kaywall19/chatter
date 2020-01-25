@@ -26,7 +26,6 @@ function Room(props) {
 
   const [showCamera, setShowCamera] = useState(false)
   const{room} = props.match.params
-  const [messages, setMessages] = useState([])
   const [name, setName] = useState("")
   const conversation = useDB(room)
   
