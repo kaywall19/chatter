@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 import './App.css'
+import "./media.css"
 import NamePicker from './NamePicker.js'
 import { FiSend, FiSave } from 'react-icons/fi'
 import { MdPhone } from 'react-icons/md'
