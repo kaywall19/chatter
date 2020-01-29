@@ -6,9 +6,11 @@ import { MdPhone } from 'react-icons/md'
 import { MdSearch } from 'react-icons/md'
 import { MdInsertEmoticon } from 'react-icons/md'
 import { MdPhotoCamera } from 'react-icons/md'
-import {db, useDB} from './db'
+import { db, useDB } from './db'
 import { BrowserRouter, Route } from "react-router-dom"
 import Camera from 'react-snap-pic'
+import * as firebase from "firebase/app"
+import "firebase/storage"
 
 function App() {
 
@@ -28,6 +30,15 @@ function Room(props) {
   const{room} = props.match.params
   const [name, setName] = useState("")
   const conversation = useDB(room)
+
+  async function takePicture(img) {
+    setShowCamera(false)
+    const imgID = Math.random().toString(36).substring(7)
+    var storageRef = firebase.storage().ref()
+    var ref = storageRef.child(imgID + '.jpg')
+    await ref.putString(img, 'data_url')
+    db.send({ img: imgID, name, ts: new Date(), room })
+  }
   
   return <main>
     <header className= "header">
@@ -46,16 +57,7 @@ function Room(props) {
     </header> 
 
     <div className="messages">
-      {conversation.map((m,i)=> {
-          return <div className= "with-name"
-            from={m.name===name?"me":"you"}>
-            <p id="message-from">{m.name}</p>
-            <div key={i} className="message-wrap">
-              <div className="arrow"></div>
-              <div className="message">{m.text}</div>
-            </div>
-          </div>
-        })}
+      {conversation.map((m,i)=> <Message key={i} m={m} name={name} />)}
     </div>
 
     <TextInput onSend={(text)=> {
@@ -66,13 +68,29 @@ function Room(props) {
       showCamera={()=>setShowCamera(true)
     }/>
 
-    {showCamera && <Camera takePicture={(img)=> {
-      console.log(img)
-      setShowCamera(false)
-    }}/>}
+    {showCamera && <Camera takePicture={takePicture}/>}
 
   </main>
 }
+
+const bucket = 'https://firebasestorage.googleapis.com/v0/b/chatter-2cdab.appspot.com/o/'
+const suffix = '.jpg?alt=media'
+
+function Message({m, name}) {
+  return <div className= "with-name"
+  from={m.name===name?"me":"you"}>
+  <p id="message-from">{m.name}</p>
+  <div className="message-wrap">
+    <div className="arrow"></div>
+    <div className="message">
+      {m.text}
+      {m.img && <img src={bucket+m.img+suffix} alt="pic"/>}
+      </div>
+  </div>
+
+</div>
+}
+
 
 function TextInput(props) {
   
@@ -94,7 +112,6 @@ function TextInput(props) {
         placeholder="Type your message here"
         onChange={e=> setText(e.target.value)}
         onKeyPress={(e) => {
-          //e.preventDefault()
           if (e.key === "Enter" && (text)) {
             props.onSend(text)
             inputEl.current.focus()

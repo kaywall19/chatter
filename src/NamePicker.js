@@ -12,7 +12,7 @@ function NamePicker(props) {
        saveData = "Add User" 
     }  
 
-    if(editName == false) {
+    if(editName === false) {
         props.onSend(saveData)
         return <div className= "id">
             <p id="placeholder">{name}</p>
@@ -24,7 +24,7 @@ function NamePicker(props) {
                 id="profile"
             />
         </div>
-    } else if (editName == true) {
+    } else if (editName === true) {
         return <div className= "id">
             <input size="12"
             value={name}
@@ -37,7 +37,6 @@ function NamePicker(props) {
             }}
 
             onKeyPress={(e) => {
-            //e.preventDefault()
             if (e.key === "Enter" && (name)) {
                 props.onSend(name)
                 setEditName(false)
